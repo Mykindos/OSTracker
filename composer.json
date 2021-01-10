@@ -1,0 +1,10 @@
+{
+    "name": "tomho/os-tracker",
+    "authors": [
+        {
+            "name": "Tom",
+            "email": "tomhoogstra@live.com.au"
+        }
+    ],
+    "require": {}
+}
