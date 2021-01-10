@@ -19,97 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a29d0c8b-eabd-45f8-8c30-ce38988c2618" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/OSTracker.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/.styleci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Console/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Exceptions/Handler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/TrustHosts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/artisan" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/bootstrap/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/bootstrap/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/broadcasting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/cache.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/cors.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/filesystems.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/hashing.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/logging.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/mail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/queue.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/services.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/database/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/database/factories/UserFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/public/web.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/lang/en/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/lang/en/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/lang/en/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/lang/en/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/resources/views/welcome.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/channels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/console.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/app/public/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/framework/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/framework/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/framework/cache/data/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/framework/sessions/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/framework/testing/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/framework/views/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/storage/logs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/CreatesApplication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/TestCase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/webpack.mix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+    <list default="true" id="a29d0c8b-eabd-45f8-8c30-ce38988c2618" name="Default Changelist" comment="Base laravel API beginning">
+      <change afterPath="$PROJECT_DIR$/api/database/seeds/BotUserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/BotUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/BotUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,8 +59,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610256784103</updated>
-      <workItem from="1610256785206" duration="853000" />
+      <workItem from="1610256785206" duration="6395000" />
     </task>
+    <task id="LOCAL-00001" summary="Base laravel API beginning">
+      <created>1610257802474</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610257802474</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,5 +84,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Base laravel API beginning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base laravel API beginning" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610262983807">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1610262983807" />
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1610257804214">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1610257804214" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1610259762554">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1610259762554" />
   </component>
 </project>
