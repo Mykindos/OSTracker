@@ -29,10 +29,10 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
             });
 
             Route::group(['middleware' => 'user.exists'], function(){
-                Route::get('/log', "ScriptController@submitLog");
-                Route::get('/runtime', "ScriptController@submitRuntime");
-                Route::get('/experience', "ScriptController@submitExperience");
-                Route::get('/items', "ScriptController@submitItems");
+                Route::post('/log', "ScriptController@submitLog");
+                Route::post('/runtime', "ScriptController@submitRuntime");
+                Route::post('/experience', "ScriptController@submitExperience");
+                Route::post('/items', "ScriptController@submitItems");
             });
 
         });
