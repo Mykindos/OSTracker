@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\BotUser;
+use App\Models\BotUser;
 use Closure;
 
 class BotUserExists
