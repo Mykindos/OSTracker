@@ -14,19 +14,10 @@ class CreateItemstatusTable extends Migration
      */
     public function up()
     {
-        $statuses = ['Received', 'Lost', 'Spent'];
-
         Schema::create('itemstatus', function (Blueprint $table) {
             $table->id();
             $table->string('status');
         });
-
-        foreach($statuses as $status){
-            $itemStatus = new ItemStatus();
-            $itemStatus->status = $status;
-
-            $itemStatus->save();
-        }
     }
 
     /**
