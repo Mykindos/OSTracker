@@ -6,5 +6,7 @@
             "email": "tomhoogstra@live.com.au"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-http": "*"
+    }
 }

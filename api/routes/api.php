@@ -1,6 +1,6 @@
 <?php
 
-use App\BotUser;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['cors', 'json.response']], function(){
-    Route::group(['middleware' => 'client'], function() {
 
-        Route::get('/botusers', function () {
-            return BotUser::all();
+Route::group(['middleware' => ['cors', 'json.response']], function () {
+
+    Route::post("/register", "Auth\ApiController@registerUser");
+
+    Route::group(['middleware' => 'auth:api'], function() {
+
+        Route::group(['middleware' => 'script.access'], function(){
+            Route::get('/botusers', function (Request $request) {
+                $user = User::whereId($request->user()->id)->first();
+
+                return $user->getScripts()->get()->toArray();
+            });
         });
+
     });
+
+
 });
