@@ -17,7 +17,7 @@ class ApiController extends Controller {
         $user->api_token = str_random(60);
         $user->save();
 
-        return response()->json(["message" => "User created"], 201);
+        return response()->json(["message" => "User created"], 200);
     }
 
 }

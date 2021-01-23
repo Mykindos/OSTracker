@@ -20,6 +20,7 @@ class ScriptController extends Controller
         return BotUser::where('username', '=', $request->user)->first()['id'];
     }
 
+
     public function submitLog(Request $request)
     {
 
@@ -73,19 +74,11 @@ class ScriptController extends Controller
 
     public function submitItems(Request $request)
     {
-
-        $item = Item::where('itemName', '=', $request->item)->first();
-
         if (empty($request->item)) {
             return response(['message' => 'You must provide an item name.']);
         }
 
-        if (empty($item)) {
-            $item = new Item();
-            $item->itemName = $request->item;
-            $item->save();
-            return $this->submitItems($request);
-        }
+        $item = Item::firstOrCreate(['itemName' => $request->item]);
 
         $itemStatus = ItemStatus::where('status', '=', $request->status)->first();
 

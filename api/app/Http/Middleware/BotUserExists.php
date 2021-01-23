@@ -16,11 +16,7 @@ class BotUserExists
      */
     public function handle($request, Closure $next)
     {
-        $botUser = BotUser::where('username', '=', $request->user)->first();
-
-        if(empty($botUser)){
-            return response(["message" => "Could not find a user by this name"]);
-        }
+        BotUser::firstOrCreate(['username' => $request->user]);
 
         return $next($request);
     }
