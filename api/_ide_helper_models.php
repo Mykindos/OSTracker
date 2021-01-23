@@ -31,23 +31,60 @@ namespace App{
 
 namespace App{
 /**
+ * App\Item
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Item query()
+ */
+	class Item extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\ItemStatus
+ *
+ * @property int $id
+ * @property string $status
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemStatus newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemStatus newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemStatus query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemStatus whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ItemStatus whereStatus($value)
+ */
+	class ItemStatus extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Script
  *
  * @property int $id
  * @property string $name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\UserScript[] $userScripts
  * @property-read int|null $user_scripts_count
  * @method static \Illuminate\Database\Eloquent\Builder|Script newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Script newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Script query()
- * @method static \Illuminate\Database\Eloquent\Builder|Script whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Script whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Script whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Script whereUpdatedAt($value)
  */
 	class Script extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Skill
+ *
+ * @property int $id
+ * @property string $skillName
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereSkillName($value)
+ */
+	class Skill extends \Eloquent {}
 }
 
 namespace App{
