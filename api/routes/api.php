@@ -25,9 +25,16 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::group(['middleware' => 'script.access'], function(){
             Route::get('/botusers', function (Request $request) {
                 $user = User::whereId($request->user()->id)->first();
-
                 return $user->getScripts()->get()->toArray();
             });
+
+            Route::group(['middleware' => 'user.exists'], function(){
+                Route::get('/log', "ScriptController@submitLog");
+                Route::get('/runtime', "ScriptController@submitRuntime");
+                Route::get('/experience', "ScriptController@submitExperience");
+                Route::get('/items', "ScriptController@submitItems");
+            });
+
         });
 
     });

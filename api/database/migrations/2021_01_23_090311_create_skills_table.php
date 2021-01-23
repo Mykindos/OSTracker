@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\Schema;
 class CreateSkillsTable extends Migration
 {
 
+    private $skills = [
+        'ATTACK', 'STRENGTH', 'DEFENCE',
+        'HITPOINTS', 'RANGED', 'MAGIC',
+        'PRAYER', 'RUNECRAFTING', 'CRAFTING',
+        'MINING', 'SMITHING', 'FISHING',
+        'COOKING', 'FIREMAKING', 'WOODCUTTING',
+        'AGILITY', 'HERBLORE', 'THIEVING',
+        'FLETCHING', 'SLAYER', 'FARMING',
+        'CONSTRUCTION', 'HUNTER'
+    ];
+
     /**
      * Run the migrations.
      *
@@ -15,23 +26,14 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        $skills = [
-            'ATTACK', 'STRENGTH', 'DEFENCE',
-            'HITPOINTS', 'RANGED', 'MAGIC',
-            'PRAYER', 'RUNECRAFTING', 'CRAFTING',
-            'MINING', 'SMITHING', 'FISHING',
-            'COOKING', 'FIREMAKING', 'WOODCUTTING',
-            'AGILITY', 'HERBLORE', 'THIEVING',
-            'FLETCHING', 'SLAYER', 'FARMING',
-            'CONSTRUCTION', 'HUNTER'
-        ];
+
 
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string("skillName");
         });
 
-        foreach($skills as $s){
+        foreach ($this->skills as $s) {
             $skill = new Skill();
             $skill->skillName = $s;
             $skill->save();

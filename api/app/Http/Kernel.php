@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\BotUserExists;
 use App\Http\Middleware\Cors;
 use App\Http\Middleware\ForceJsonResponse;
 use App\Http\Middleware\HasScriptAccess;
@@ -73,6 +74,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'json.response' => ForceJsonResponse::class,
         'cors' => Cors::class,
-        'script.access' => HasScriptAccess::class
+        'script.access' => HasScriptAccess::class,
+        'user.exists' => BotUserExists::class
     ];
 }

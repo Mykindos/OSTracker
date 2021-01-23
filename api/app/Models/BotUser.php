@@ -12,4 +12,8 @@ class BotUser extends Model
     static function test(Request $request = null){
         return BotUser::all();
     }
+
+    public function logs(){
+        return $this->hasMany(BotLog::class, 'botUserID');
+    }
 }
