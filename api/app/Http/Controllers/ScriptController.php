@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\BotExperience;
-use App\BotItem;
-use App\BotLog;
-use App\BotRuntime;
-use App\BotUser;
-use App\Item;
-use App\ItemStatus;
-use App\Skill;
+use App\Models\BotExperience;
+use App\Models\BotItem;
+use App\Models\BotLog;
+use App\Models\BotRuntime;
+use App\Models\BotUser;
+use App\Models\Item;
+use App\Models\ItemStatus;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class ScriptController extends Controller
