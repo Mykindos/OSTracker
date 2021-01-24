@@ -16,8 +16,9 @@ class BotUserExists
      */
     public function handle($request, Closure $next)
     {
-        BotUser::firstOrCreate(['username' => $request->user]);
+        $user = BotUser::firstOrCreate(['username' => $request->user]);
 
+        $request->botUserID = $user['id'];
         return $next($request);
     }
 }
