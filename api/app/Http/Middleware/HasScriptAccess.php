@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Script;
 use Closure;
 
 class HasScriptAccess
@@ -16,9 +17,17 @@ class HasScriptAccess
     public function handle($request, Closure $next)
     {
 
-        if(!$request->user()->hasScriptAccess($request->scriptID)){
+        $script = Script::where('scriptName', '=', $request->scriptName)->first();
+
+        if(!empty($script)){
+            return response(['message' => 'Could not find a script with this name.']);
+        }
+
+        if(!$request->user()->hasScriptAccess($script['id'])){
             return response(['message' => 'You do not have access to this script.', 'status' => 401]);
         }
+
+        $request->scriptID = $script['id'];
 
         return $next($request);
     }

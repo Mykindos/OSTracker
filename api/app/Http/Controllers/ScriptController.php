@@ -10,6 +10,7 @@ use App\Models\BotUser;
 use App\Models\Item;
 use App\Models\ItemStatus;
 use App\Models\Skill;
+use App\Script;
 use Illuminate\Http\Request;
 
 class ScriptController extends Controller
