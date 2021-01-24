@@ -19,7 +19,7 @@ class HasScriptAccess
 
         $script = Script::where('name', '=', $request->scriptName)->first();
 
-        if(!empty($script)){
+        if(empty($script)){
             return response(['message' => 'Could not find a script with this name.']);
         }
 
