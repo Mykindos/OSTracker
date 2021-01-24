@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Script;
+use App\Models\Script;
 use Closure;
 
 class HasScriptAccess
