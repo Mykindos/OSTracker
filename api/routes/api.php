@@ -23,11 +23,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::group(['middleware' => 'auth:api'], function() {
 
         Route::group(['middleware' => 'script.access'], function(){
-            Route::get('/botusers', function (Request $request) {
-                $user = User::whereId($request->user()->id)->first();
-                return $user->getScripts()->get()->toArray();
-            });
-
             Route::group(['middleware' => 'user.exists'], function(){
                 Route::post('/log', "ScriptController@submitLog");
                 Route::post('/runtime', "ScriptController@submitRuntime");
