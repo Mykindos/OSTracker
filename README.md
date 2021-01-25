@@ -87,3 +87,22 @@ To do this, add this to the bottom of the config (change the paths where necessa
 12. Installation should now be complete, and you should be able to access the Laravel default page by going to your hostname in any web browser
 
 ![alt text](https://i.imgur.com/Xp4fZu1.png "Example page")
+
+## Post-installation instructions
+After installation, you will need to create your first user to get an API token which will be used in your script and for future data retrieval.
+
+You can do this by calling the register endpoint of your newly deployed API. This can be easily done in Postman, or anywhere of your choosing.
+![postman](https://i.imgur.com/qH4m1vJ.png)
+
+Once the user has been created and you have your API token, you will need to do some work in the MySQL database to allocate any scripts to this user. 
+
+Start off by adding your own scripts / service to the ```scripts``` table. e.g.
+![scripts](https://i.imgur.com/MufD3Qd.png)
+
+Once your scripts have been created, you can give your user access by adding the userID to scriptID mapping in the ```userscripts``` table.
+If i want to allocate these 9 scripts to the user we just created 'Tom', I would goto the ```users``` table and get the ID for the user first, then insert it into userscripts like so.
+
+Given that Tom is the first user I have created, the ID is '1'.
+![userscripts](https://i.imgur.com/HpMku3F.png)
+
+Tom now has access to submit data for these 9 scripts
