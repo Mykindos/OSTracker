@@ -15,7 +15,7 @@ public void onStart(){
         try {
 		tracker = new Tracker(getBot(), getName(), "BASE_API_URL", "YOUR_TOKEN")
 				.setUpdateInterval(30) // Defaults to an hour
-				.start(); // Optional
+				.start();
 		tracker.getSessionTracker().setVersion(getVersion());
 		
 	} catch (Exception e) {
