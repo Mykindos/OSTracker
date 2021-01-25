@@ -49,12 +49,12 @@ class ScriptController extends Controller
     public function submitExperience(Request $request)
     {
 
-        if(empty($request->exp)){
+        if (empty($request->exp)) {
             return response(['message' => "No experience data provided."]);
         }
 
         $expData = json_decode($request->exp, true);
-        foreach($expData as $skillName => $expGained){
+        foreach ($expData as $skillName => $expGained) {
             $skill = Skill::where('skillName', '=', $skillName)->first();
 
             if (empty($skill)) {
@@ -83,7 +83,7 @@ class ScriptController extends Controller
 
         $itemData = json_decode($request->items, true);
 
-        foreach($itemData as $i){
+        foreach ($itemData as $i) {
             $item = Item::firstOrCreate(['itemName' => $i['name']]);
 
             $itemStatus = ItemStatus::where('status', '=', $i['status'])->first();
@@ -106,7 +106,8 @@ class ScriptController extends Controller
 
     }
 
-    public function getDataByUser(Request $request){
+    public function getDataByUser(Request $request)
+    {
         $user = BotUser::whereId($request->botUserID)->first();
 
         $runtimeData = $user->runtime()
@@ -120,7 +121,7 @@ class ScriptController extends Controller
                 ['exp', '>', 0],
                 ['scriptID', '=', $request->scriptID]
             ])
-           ->groupBy('skillID');
+            ->groupBy('skillID');
 
 
         $itemData = $user->item()
@@ -128,16 +129,13 @@ class ScriptController extends Controller
             ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
             ->selectRaw("itemName, status, SUM(amount) as total")
             ->where('scriptID', '=', $request->scriptID)
-            ->groupBy(['itemID', 'itemStatusID'])->get()->toArray();
+            ->groupBy(['itemID', 'itemStatusID']);
 
         return response([
             'experience' => $expData->get(),
             'runtime' => $runtimeData->get(),
-            'item' => [
-                'Received' => array_filter($itemData, function($e) {return $e['status'] == 'Received';}),
-                'Lost' => array_filter($itemData, function($e) {return $e['status'] == 'Lost';}),
-                'Spent' => array_filter($itemData, function($e) {return $e['status'] == 'Spent';})
-            ]
+            'item' => $itemData->get()
         ]);
     }
 }
+
