@@ -12,18 +12,18 @@ private Tracker tracker;
 
 @Override
 public void onStart(){
-                try {
-			tracker = new Tracker(getBot(), getName(), "BASE_API_URL", "YOUR_TOKEN")
-					.setUpdateInterval(30) // Defaults to an hour
-					.start(); // Optional
-			tracker.getSessionTracker().setVersion(getVersion());
-
-		} catch (Exception e) {
-			if (tracker != null) {
-				tracker.stop();
-			}
-			e.printStackTrace();
+        try {
+		tracker = new Tracker(getBot(), getName(), "BASE_API_URL", "YOUR_TOKEN")
+				.setUpdateInterval(30) // Defaults to an hour
+				.start(); // Optional
+		tracker.getSessionTracker().setVersion(getVersion());
+		
+	} catch (Exception e) {
+		if (tracker != null) {
+			tracker.stop();
 		}
+		e.printStackTrace();
+	}
 }
 ```
 
