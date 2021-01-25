@@ -108,3 +108,34 @@ Given that Tom is the first user I have created, the ID is '1'.
 ![userscripts](https://i.imgur.com/HpMku3F.png)
 
 Tom now has access to submit data for these 9 scripts
+
+## Submitting data
+Currently there is 4 endpoints which you can use to submit data for users of your script or service, these are:
+* items
+* experience
+* runtime
+* log
+
+In order to submit data, you will need to include the API token you were provided when you created your user as the bearer token in any post request you make.
+The OSTracker client will handle this for you, but you can do this in Postman under the Authorization tab, and selecting 'Bearer Token' as the type.
+
+Here are some example requests for each of these endpoints. You can also import this collection into postman using the following link: https://www.getpostman.com/collections/e85ebdc84ea9ae380546
+
+
+### Items
+![items](https://i.imgur.com/BJrbTMt.png)
+
+Note: The JSON format seperating each item received, lost, or spent.
+
+### Experience
+![experience](https://i.imgur.com/eKaJBxQ.png)
+
+### Runtime
+![runtime](https://i.imgur.com/sqp9Gyl.png)
+
+### Log
+![log](https://i.imgur.com/6yjn1uD.png)
+
+
+
+
