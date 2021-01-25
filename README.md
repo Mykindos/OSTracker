@@ -153,6 +153,6 @@ Note: The JSON format seperating each item received, lost, or spent.
 
 Currently there is a single endpoint that allows you to fetch the totals of all data for a certain user.
 
-[!dataByUser](https://i.imgur.com/1zv0dQe.png)
+![dataByUser](https://i.imgur.com/1zv0dQe.png)
 
 
