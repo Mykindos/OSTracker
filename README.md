@@ -147,6 +147,12 @@ Note: The JSON format seperating each item received, lost, or spent.
 ### Log
 ![log](https://i.imgur.com/6yjn1uD.png)
 
+## Retrieving Data
 
+### getDataByUser
+
+Currently there is a single endpoint that allows you to fetch the totals of all data for a certain user.
+
+[!dataByUser](https://i.imgur.com/1zv0dQe.png)
 
 
