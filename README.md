@@ -27,6 +27,17 @@ public void onStart(){
 }
 ```
 
+And end the tracker in your scripts onExit like so
+```java
+@Override
+public void onExit(){
+
+	if(tracker != null){
+		tracker.stop();
+	}
+}
+```
+
 Your token will be created when deploying the laravel API to your server, or it will be provided to you if you are choosing to integrate with somebody elses API.
 
 From here, OSTracker will automatically handle experience, loot, and script runtime tracking, and by default will submit this data to the API once per hour. Data will also be submitted when the script is stopped.
