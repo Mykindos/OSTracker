@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GetDataByUserRequest;
 use App\Models\BotExperience;
 use App\Models\BotItem;
 use App\Models\BotLog;
@@ -10,7 +11,6 @@ use App\Models\BotUser;
 use App\Models\Item;
 use App\Models\ItemStatus;
 use App\Models\Skill;
-use App\Script;
 use Illuminate\Http\Request;
 
 class ScriptController extends Controller
@@ -104,5 +104,40 @@ class ScriptController extends Controller
 
         return response(['message' => "Item data saved for {$request->user}"]);
 
+    }
+
+    public function getDataByUser(Request $request){
+        $user = BotUser::whereId($request->botUserID)->first();
+
+        $runtimeData = $user->runtime()
+            ->selectRaw("SUM(duration) as totalRuntime")
+            ->where('scriptID', '=', $request->scriptID);
+
+        $expData = $user->experience()
+            ->leftJoin('skills', 'skills.id', '=', 'experiencegained.skillID')
+            ->selectRaw("skillName, SUM(exp) as expTotal")
+            ->where([
+                ['exp', '>', 0],
+                ['scriptID', '=', $request->scriptID]
+            ])
+           ->groupBy('skillID');
+
+
+        $itemData = $user->item()
+            ->leftJoin('itemstatus', 'itemstatus.id', '=', 'scriptitems.itemStatusID')
+            ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
+            ->selectRaw("itemName, status, SUM(amount) as total")
+            ->where('scriptID', '=', $request->scriptID)
+            ->groupBy(['itemID', 'itemStatusID'])->get()->toArray();
+
+        return response([
+            'experience' => $expData->get(),
+            'runtime' => $runtimeData->get(),
+            'item' => [
+                'Received' => array_filter($itemData, function($e) {return $e['status'] == 'Received';}),
+                'Lost' => array_filter($itemData, function($e) {return $e['status'] == 'Lost';}),
+                'Spent' => array_filter($itemData, function($e) {return $e['status'] == 'Spent';})
+            ]
+        ]);
     }
 }

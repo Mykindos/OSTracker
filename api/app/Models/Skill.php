@@ -8,4 +8,8 @@ class Skill extends Model
 {
     public $timestamps = false;
     //
+
+    public function experience(){
+        return $this->hasMany(BotExperience::class, 'skillID');
+    }
 }

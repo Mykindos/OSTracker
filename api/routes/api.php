@@ -28,6 +28,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
                 Route::post('/runtime', "ScriptController@submitRuntime");
                 Route::post('/experience', "ScriptController@submitExperience");
                 Route::post('/items', "ScriptController@submitItems");
+
+                Route::get('/getDataByUser', "ScriptController@getDataByUser");
             });
 
         });

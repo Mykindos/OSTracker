@@ -42,6 +42,10 @@ class User extends Authenticatable
         return $this->hasManyThrough(Script::class, UserScript::class, 'userID', 'id', 'id', 'scriptID');
     }
 
+    public function experience(){
+        return $this->hasMany(BotExperience::class, 'userID');
+    }
+
     /**
      * @param int $scriptID ID of the script
      * @return bool Returns true if the user has access to this script

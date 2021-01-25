@@ -9,8 +9,16 @@ class BotUser extends Model
 {
     protected $fillable = ['username'];
 
-    static function test(Request $request = null){
-        return BotUser::all();
+    public function experience(){
+        return $this->hasMany(BotExperience::class, 'botUserID');
+    }
+
+    public function runtime(){
+        return $this->hasMany(BotRuntime::class, 'botUserID');
+    }
+
+    public function item(){
+        return $this->hasMany(BotItem::class, 'botUserID');
     }
 
     public function logs(){

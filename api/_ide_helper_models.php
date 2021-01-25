@@ -10,9 +10,9 @@
  */
 
 
-namespace App{
+namespace App\Models{
 /**
- * App\BotExperience
+ * App\Models\BotExperience
  *
  * @property int $id
  * @property int $scriptID
@@ -35,9 +35,9 @@ namespace App{
 	class BotExperience extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\BotItem
+ * App\Models\BotItem
  *
  * @property int $id
  * @property int $scriptID
@@ -62,9 +62,9 @@ namespace App{
 	class BotItem extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\BotLog
+ * App\Models\BotLog
  *
  * @property int $id
  * @property int $scriptID
@@ -89,9 +89,9 @@ namespace App{
 	class BotLog extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\BotRuntime
+ * App\Models\BotRuntime
  *
  * @property int $id
  * @property int $scriptID
@@ -114,15 +114,17 @@ namespace App{
 	class BotRuntime extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\BotUser
+ * App\Models\BotUser
  *
  * @property int $id
  * @property string $username
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\BotLog[] $logs
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotExperience[] $experience
+ * @property-read int|null $experience_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotLog[] $logs
  * @property-read int|null $logs_count
  * @method static \Illuminate\Database\Eloquent\Builder|BotUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotUser newQuery()
@@ -135,9 +137,9 @@ namespace App{
 	class BotUser extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\Item
+ * App\Models\Item
  *
  * @property int $id
  * @property string $itemName
@@ -150,9 +152,9 @@ namespace App{
 	class Item extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\ItemStatus
+ * App\Models\ItemStatus
  *
  * @property int $id
  * @property string $status
@@ -165,13 +167,13 @@ namespace App{
 	class ItemStatus extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\Script
+ * App\Models\Script
  *
  * @property int $id
  * @property string $name
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\UserScript[] $userScripts
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserScript[] $userScripts
  * @property-read int|null $user_scripts_count
  * @method static \Illuminate\Database\Eloquent\Builder|Script newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Script newQuery()
@@ -182,9 +184,9 @@ namespace App{
 	class Script extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\Skill
+ * App\Models\Skill
  *
  * @property int $id
  * @property string $skillName
@@ -197,9 +199,9 @@ namespace App{
 	class Skill extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\User
+ * App\Models\User
  *
  * @property int $id
  * @property string $name
@@ -232,15 +234,15 @@ namespace App{
 	class User extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\UserScript
+ * App\Models\UserScript
  *
  * @property int $id
  * @property int $userID
  * @property int $scriptID
- * @property-read \App\Script|null $script
- * @property-read \App\User|null $users
+ * @property-read \App\Models\Script|null $script
+ * @property-read \App\Models\User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|UserScript newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserScript newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserScript query()
