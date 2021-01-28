@@ -28,7 +28,7 @@ public class SessionTracker {
     public SessionTracker(Tracker tracker) {
         this.tracker = tracker;
         this.expPerSkill = new HashMap<>();
-        session = new Session();
+        session = new Session(tracker);
         session.setMirrorMode(tracker.isMirrorMode());
         Arrays.stream(Skill.values()).forEach(s -> {
             expPerSkill.put(s, 0);
@@ -53,7 +53,7 @@ public class SessionTracker {
         APIHandler.submitSessionData(tracker.getApiURL(), tracker.getApiToken(), tracker.getClient().getUsername(),
                 tracker.getScriptName(), String.valueOf(getVersion()), session);
 
-        session = new Session();
+        session = new Session(tracker);
 
     }
 

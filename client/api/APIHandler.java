@@ -56,8 +56,6 @@ public class APIHandler {
             runtimeParams.put("duration", session.getRunTime());
             submitRequest(apiURL + "runtime", token, runtimeParams);
 
-            System.out.println(apiURL + "runtime");
-
             // Submit experience data
             Map<String, Object> expParams = new HashMap<>();
             expParams.put("scriptName", scriptName);
@@ -93,10 +91,7 @@ public class APIHandler {
 
     private static HashMap<Integer, Integer> cache = new HashMap<>();
 
-    private static final String PRICE_URL = "https://v51zl41bph.execute-api.us-west-2.amazonaws.com/prod?itemId=";
-
-
-    public static int getPrice(int itemID) {
+    public static int getPrice(String apiURL, String token, int itemID) {
         if (itemID == 995) return 1;
 
         if (cache.containsKey(itemID)) {
@@ -107,8 +102,9 @@ public class APIHandler {
 
             BufferedReader in = null;
             try {
-                URL url = new URL(PRICE_URL + itemID);
-                URLConnection connect = url.openConnection();
+                URL url = new URL(apiURL + "getItemPrice?itemID=" + itemID);
+                HttpURLConnection connect = (HttpURLConnection) url.openConnection();
+                connect.addRequestProperty("Authorization", "Bearer " + token);
                 in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
                 price = Integer.valueOf(in.readLine());
                 cache.put(itemID, price);

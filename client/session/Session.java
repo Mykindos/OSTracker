@@ -1,5 +1,6 @@
 package me.mykindos.client.tracker.session;
 
+import me.mykindos.client.tracker.Tracker;
 import me.mykindos.client.tracker.api.APIHandler;
 import me.mykindos.utilities.UtilTime;
 import org.osbot.rs07.api.model.Item;
@@ -23,12 +24,14 @@ public class Session {
     private long runTime;
     private List<String> logs;
     private boolean mirrorMode;
+    private Tracker tracker;
 
 
     /**
      * Create a session with the current system time
      */
-    public Session(){
+    public Session(Tracker tracker) {
+        this.tracker = tracker;
         this.startTime = System.currentTimeMillis();
         expGained = new HashMap<>();
         itemData = new ArrayList<>();
@@ -37,9 +40,10 @@ public class Session {
 
     /**
      * Create Session with a start time in MS
+     *
      * @param startTime
      */
-    public Session(long startTime){
+    public Session(long startTime) {
         this.startTime = startTime;
     }
 
@@ -53,9 +57,10 @@ public class Session {
 
     /**
      * Sets the time commenced since the session started.
+     *
      * @param runTime Unix timestamp
      */
-    public void setStartTime(long runTime){
+    public void setStartTime(long runTime) {
         this.startTime = runTime;
     }
 
@@ -69,17 +74,19 @@ public class Session {
 
     /**
      * Sets the time commenced since the session started.
+     *
      * @param runTime Unix timestamp
      */
-    public void setRunTime(long runTime){
+    public void setRunTime(long runTime) {
         this.runTime = runTime;
     }
 
     /**
      * Hashmap of exp gains for each skill this session
+     *
      * @return HashMap of exp gains
      */
-    public HashMap<Skill, Integer> getExpGained(){
+    public HashMap<Skill, Integer> getExpGained() {
         return expGained;
     }
 
@@ -93,41 +100,45 @@ public class Session {
     /**
      * Add new item to the session.
      * Will increment existing entries to prevent mass database entries
-     * @param item the item
+     *
+     * @param item   the item
      * @param amount Amount of item
      * @param status Item status (Received, Lost, Spent)
      */
-    public void addItem(Item item, int amount, String status){
+    public void addItem(Item item, int amount, String status) {
         ListIterator<ItemData> items = itemData.listIterator();
-        while(items.hasNext()){
-            ItemData data = items.next();
-            if(!data.getName().equalsIgnoreCase(item.getName())) continue;
-            if(!data.getStatus().equalsIgnoreCase(status)) continue;
+        if (item.getName() != null && !item.getName().equals("null")) {
+            while (items.hasNext()) {
+                ItemData data = items.next();
+                if (!data.getName().equalsIgnoreCase(item.getName())) continue;
+                if (!data.getStatus().equalsIgnoreCase(status)) continue;
 
-            data.setAmount(data.getAmount() + amount);
-            data.setPrice(APIHandler.getPrice(item.getId()) * data.getAmount());
-            return;
+                data.setAmount(data.getAmount() + amount);
+                data.setPrice(APIHandler.getPrice(tracker.getApiURL(), tracker.getApiToken(), item.getId()) * data.getAmount());
+                return;
+            }
+
+            itemData.add(new ItemData(item.getName(), amount, status,
+                    APIHandler.getPrice(tracker.getApiURL(), tracker.getApiToken(), item.getId()) * amount));
         }
-
-        itemData.add(new ItemData(item.getName(), amount, status, APIHandler.getPrice(item.getId()) * amount));
     }
 
     /**
-     *
      * @return List of logs, e.g. errors or generic messages
      */
-    public List<String> getLogs(){
+    public List<String> getLogs() {
         return logs;
     }
 
     private long lastLogUpload = 0;
+
     /**
      * Upload a log to the database
-
+     *
      * @param log Log (e.g. stacktrace or generic message)
      */
-    public  void addLog(String log){
-        if(UtilTime.elapsed(lastLogUpload, 60_000)) {
+    public void addLog(String log) {
+        if (UtilTime.elapsed(lastLogUpload, 60_000)) {
             logs.add(log);
             lastLogUpload = System.currentTimeMillis(); // Prevent upload spam
         }
@@ -140,5 +151,9 @@ public class Session {
 
     public void setMirrorMode(boolean mirrorMode) {
         this.mirrorMode = mirrorMode;
+    }
+
+    public Tracker getTracker() {
+        return tracker;
     }
 }

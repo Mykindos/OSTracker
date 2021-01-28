@@ -43,7 +43,7 @@ public class TrackerThread extends Thread {
                         sessionTracker.endSession();
                     }
                 }
-                Thread.sleep(333);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -62,7 +62,7 @@ public class TrackerThread extends Thread {
         Item[] currentEquippedItems = tracker.getEquipment().getItems();
 
         if(tracker.getBank().isOpen() || tracker.getDepositBox().isOpen() || tracker.getGrandExchange().isOpen()){
-            interfaceOpenTime = System.currentTimeMillis() + 1000;
+            interfaceOpenTime = System.currentTimeMillis() + 2000;
         }
 
         if (interfaceOpenTime - System.currentTimeMillis() <= 0) {
