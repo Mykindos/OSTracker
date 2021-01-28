@@ -23,6 +23,8 @@ Route::group(['middleware' => ['cors', 'json.response', 'throttle:100,1']], func
 
     Route::group(['middleware' => 'auth:api'], function() {
 
+        Route::get('/getItemPrice', "PriceController@getItemPrice");
+
         Route::group(['middleware' => 'script.access'], function(){
             Route::group(['middleware' => 'user.exists'], function(){
                 Route::post('/log', "ScriptController@submitLog");
@@ -33,7 +35,6 @@ Route::group(['middleware' => ['cors', 'json.response', 'throttle:100,1']], func
                 Route::get('/getDataByUser', "ScriptController@getDataByUser");
             });
             Route::get('/getDataByScript', "ScriptController@getDataByScript");
-            Route::get('/getItemPrice', "PriceController@getItemPrice");
         });
 
     });
