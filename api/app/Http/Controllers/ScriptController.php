@@ -131,7 +131,7 @@ class ScriptController extends Controller
             ->selectRaw("itemName, status, SUM(amount) as total")
             ->where('scriptID', '=', $request->scriptID)
             ->groupBy(['itemID', 'itemStatusID'])
-            ->orderBy('SUM(amount)', 'desc');
+            ->orderBy('total', 'desc');
 
         return response([
             'experience' => $expData->get(),
@@ -163,7 +163,7 @@ class ScriptController extends Controller
             ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
             ->selectRaw("itemName, status, SUM(amount) as total")
             ->groupBy(['itemID', 'itemStatusID'])
-            ->orderBy('SUM(amount)', 'desc');
+            ->orderBy('total', 'desc');
 
         return response([
             'users' => $userData,
