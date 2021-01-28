@@ -98,6 +98,7 @@ class ScriptController extends Controller
             $botItem->botUserID = $request->botUserID;
             $botItem->itemID = $item['id'];
             $botItem->amount = $i['amount'];
+            $botItem->price = $i['price'];
             $botItem->itemStatusID = $itemStatus['id'];
 
             $botItem->save();
@@ -129,7 +130,7 @@ class ScriptController extends Controller
         $itemData = $user->item()
             ->leftJoin('itemstatus', 'itemstatus.id', '=', 'scriptitems.itemStatusID')
             ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
-            ->selectRaw("itemName, status, SUM(amount) as total")
+            ->selectRaw("itemName, status, SUM(amount) as total, SUM(price) as price")
             ->where('scriptID', '=', $request->scriptID)
             ->groupBy(['itemID', 'itemStatusID'])
             ->orderBy('total', 'desc');
@@ -163,7 +164,7 @@ class ScriptController extends Controller
         $itemData = $script->item()
             ->leftJoin('itemstatus', 'itemstatus.id', '=', 'scriptitems.itemStatusID')
             ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
-            ->selectRaw("itemName, status, SUM(amount) as total")
+            ->selectRaw("itemName, status, SUM(amount) as total, SUM(price) as price")
             ->groupBy(['itemID', 'itemStatusID'])
             ->orderBy('total', 'desc');
 

@@ -21,6 +21,9 @@ namespace App\Models{
  * @property int $exp
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\BotUser|null $botusers
+ * @property-read \App\Models\Script|null $scripts
+ * @property-read \App\Models\Skill|null $skills
  * @method static \Illuminate\Database\Eloquent\Builder|BotExperience newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotExperience newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotExperience query()
@@ -45,8 +48,12 @@ namespace App\Models{
  * @property int $itemID
  * @property int $amount
  * @property int $itemStatusID
+ * @property int $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Item|null $item
+ * @property-read \App\Models\ItemStatus|null $itemstatus
+ * @property-read \App\Models\Script|null $scripts
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem query()
@@ -56,6 +63,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem whereItemID($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem whereItemStatusID($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BotItem wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem whereScriptID($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BotItem whereUpdatedAt($value)
  */
@@ -74,6 +82,7 @@ namespace App\Models{
  * @property string $log
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Script|null $scripts
  * @method static \Illuminate\Database\Eloquent\Builder|BotLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotLog query()
@@ -100,6 +109,8 @@ namespace App\Models{
  * @property string $version
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\BotUser|null $botusers
+ * @property-read \App\Models\Script|null $scripts
  * @method static \Illuminate\Database\Eloquent\Builder|BotRuntime newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotRuntime newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotRuntime query()
@@ -124,8 +135,12 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotExperience[] $experience
  * @property-read int|null $experience_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotItem[] $item
+ * @property-read int|null $item_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotLog[] $logs
  * @property-read int|null $logs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotRuntime[] $runtime
+ * @property-read int|null $runtime_count
  * @method static \Illuminate\Database\Eloquent\Builder|BotUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BotUser query()
@@ -173,6 +188,14 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotExperience[] $experience
+ * @property-read int|null $experience_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotItem[] $item
+ * @property-read int|null $item_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotLog[] $logs
+ * @property-read int|null $logs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotRuntime[] $runtime
+ * @property-read int|null $runtime_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserScript[] $userScripts
  * @property-read int|null $user_scripts_count
  * @method static \Illuminate\Database\Eloquent\Builder|Script newModelQuery()
@@ -190,6 +213,8 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $skillName
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotExperience[] $experience
+ * @property-read int|null $experience_count
  * @method static \Illuminate\Database\Eloquent\Builder|Skill newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Skill newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Skill query()
@@ -214,6 +239,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
  * @property-read int|null $clients_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BotExperience[] $experience
+ * @property-read int|null $experience_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
