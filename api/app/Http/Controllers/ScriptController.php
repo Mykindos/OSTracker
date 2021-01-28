@@ -153,7 +153,7 @@ class ScriptController extends Controller
 
         $expData = $script->experience()
             ->leftJoin('skills', 'skills.id', '=', 'experiencegained.skillID')
-            ->selectRaw("skillName, FSUM(exp) as expTotal")
+            ->selectRaw("skillName, SUM(exp) as expTotal")
             ->where([
                 ['exp', '>', 0]
             ])
