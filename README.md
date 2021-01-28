@@ -130,7 +130,9 @@ Currently there is 4 endpoints which you can use to submit data for users of you
 In order to submit data, you will need to include the API token you were provided when you created your user as the bearer token in any post request you make.
 The OSTracker client will handle this for you, but you can do this in Postman under the Authorization tab, and selecting 'Bearer Token' as the type.
 
-Here are some example requests for each of these endpoints. You can also import this collection into postman using the following link: https://www.getpostman.com/collections/e85ebdc84ea9ae380546
+Here are some example requests for each of these endpoints. You can also import this collection into postman using the following link: https://www.postman.com/collections/de64e1ae43dc4dfca476
+
+API documentation available at: http://api.mykindos.me/doc.html
 
 
 ### Items
