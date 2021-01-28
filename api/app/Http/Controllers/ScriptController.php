@@ -135,10 +135,13 @@ class ScriptController extends Controller
             ->groupBy(['itemID', 'itemStatusID'])
             ->orderBy('total', 'desc');
 
+        $totalProfit = $user->item()->whereRaw('itemStatusID = 1')->sum('price');
+
         return response([
             'experience' => $expData->get(),
             'runtime' => $runtimeData->get(),
-            'item' => $itemData->get()
+            'item' => $itemData->get(),
+            'totalProfit' => $totalProfit
         ]);
     }
 
@@ -168,11 +171,14 @@ class ScriptController extends Controller
             ->groupBy(['itemID', 'itemStatusID'])
             ->orderBy('total', 'desc');
 
+        $totalProfit = $script->item()->whereRaw('itemStatusID = 1')->sum('price');
+
         return response([
             'users' => $userData,
             'experience' => $expData->get(),
             'runtime' => $runtimeData->get(),
-            'item' => $itemData->get()
+            'item' => $itemData->get(),
+            'totalProfit' => $totalProfit
         ]);
     }
 }
