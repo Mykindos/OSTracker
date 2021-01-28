@@ -50,6 +50,7 @@ From here, OSTracker will automatically handle experience, loot, and script runt
 * Composer
 * Git
 * MySQL Server
+* Zip, Unzip (```yum install zip unzip php-zip```)
 
 I would recommend following this tutorial, as it encompasses most of the requirements. You will need to replace Step 4 with this repository however.
 https://tecadmin.net/install-laravel-framework-on-centos/
