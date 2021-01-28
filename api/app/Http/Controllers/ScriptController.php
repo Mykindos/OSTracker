@@ -137,5 +137,34 @@ class ScriptController extends Controller
             'item' => $itemData->get()
         ]);
     }
+
+    public function getDataByScript(Request $request)
+    {
+        $script = Script::whereId($request->scriptID)->first();
+
+        $runtimeData = $script->runtime()
+            ->selectRaw("SUM(duration) as totalRuntime");
+
+        $expData = $script->experience()
+            ->leftJoin('skills', 'skills.id', '=', 'experiencegained.skillID')
+            ->selectRaw("skillName, SUM(exp) as expTotal")
+            ->where([
+                ['exp', '>', 0]
+            ])
+            ->groupBy('skillID');
+
+
+        $itemData = $script->item()
+            ->leftJoin('itemstatus', 'itemstatus.id', '=', 'scriptitems.itemStatusID')
+            ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
+            ->selectRaw("itemName, status, SUM(amount) as total")
+            ->groupBy(['itemID', 'itemStatusID']);
+
+        return response([
+            'experience' => $expData->get(),
+            'runtime' => $runtimeData->get(),
+            'item' => $itemData->get()
+        ]);
+    }
 }
 

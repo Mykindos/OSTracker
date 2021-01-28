@@ -12,4 +12,20 @@ class Script extends Model
     public function userScripts(){
         return $this->hasMany(UserScript::class, 'scriptID');
     }
+
+    public function experience(){
+        return $this->hasMany(BotExperience::class, 'scriptID');
+    }
+
+    public function runtime(){
+        return $this->hasMany(BotRuntime::class, 'scriptID');
+    }
+
+    public function item(){
+        return $this->hasMany(BotItem::class, 'scriptID');
+    }
+
+    public function logs(){
+        return $this->hasMany(BotLog::class, 'scriptID');
+    }
 }

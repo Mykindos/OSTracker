@@ -31,6 +31,7 @@ Route::group(['middleware' => ['cors', 'json.response', 'throttle:100,1']], func
 
                 Route::get('/getDataByUser', "ScriptController@getDataByUser");
             });
+            Route::get('/getDataByScript', "ScriptController@getDataByScript");
 
         });
 

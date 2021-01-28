@@ -11,4 +11,8 @@ class BotRuntime extends Model
     public function botusers(){
         return $this->hasOne(BotUser::class, 'id');
     }
+
+    public function scripts(){
+        return $this->hasOne(Script::class, 'id');
+    }
 }

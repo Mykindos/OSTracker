@@ -16,4 +16,8 @@ class BotItem extends Model
     public function item(){
         return $this->hasOne(Item::class, 'id');
     }
+
+    public function scripts(){
+        return $this->hasOne(Script::class, 'id');
+    }
 }
