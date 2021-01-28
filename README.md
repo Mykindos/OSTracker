@@ -154,8 +154,15 @@ Note: The JSON format seperating each item received, lost, or spent.
 
 ### getDataByUser
 
-Currently there is a single endpoint that allows you to fetch the totals of all data for a certain user.
-
 ![dataByUser](https://i.imgur.com/1zv0dQe.png)
+
+### getDataByScript
+
+![dataByScript](https://i.imgur.com/SInLmSx.png)
+
+### getItemPrice
+
+![itemPrice](https://i.imgur.com/BRVFkk0.png)
+
 
 
