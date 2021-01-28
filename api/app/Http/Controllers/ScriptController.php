@@ -143,6 +143,8 @@ class ScriptController extends Controller
     {
         $script = Script::whereId($request->scriptID)->first();
 
+        $userData = $script->runtime()->distinct()->count('botUserID');
+
         $runtimeData = $script->runtime()
             ->selectRaw("SUM(duration) as totalRuntime");
 
@@ -162,6 +164,7 @@ class ScriptController extends Controller
             ->groupBy(['itemID', 'itemStatusID']);
 
         return response([
+            'users' => $userData,
             'experience' => $expData->get(),
             'runtime' => $runtimeData->get(),
             'item' => $itemData->get()
