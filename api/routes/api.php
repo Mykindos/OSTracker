@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['cors', 'json.response', 'throttle:100,1']], function () {
 
     Route::post("/register", "Auth\ApiController@registerUser");
-    Route::get('/getItemPrice', "PriceController@getItemPrice");
+
 
     Route::group(['middleware' => 'auth:api'], function() {
 
@@ -33,7 +33,7 @@ Route::group(['middleware' => ['cors', 'json.response', 'throttle:100,1']], func
                 Route::get('/getDataByUser', "ScriptController@getDataByUser");
             });
             Route::get('/getDataByScript', "ScriptController@getDataByScript");
-
+            Route::get('/getItemPrice', "PriceController@getItemPrice");
         });
 
     });
