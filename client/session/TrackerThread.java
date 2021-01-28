@@ -95,21 +95,21 @@ public class TrackerThread extends Thread {
             if (currentItem != null && oldItem == null) {
                 if(!changedInventory(currentItem)) {
                     if (!wasMoved(currentItem, items, testCase)) {
-                        sessionTracker.getSession().addItem(currentItem.getName(), currentItem.getAmount(), "Received");
+                        sessionTracker.getSession().addItem(currentItem, currentItem.getAmount(), "Received");
                     }
                 }
             } else if (currentItem == null && oldItem != null) {
                 if(!changedInventory(oldItem)) {
                     if (!wasMoved(oldItem, items, testCase)) {
-                        sessionTracker.getSession().addItem(oldItem.getName(), oldItem.getAmount(), "Lost");
+                        sessionTracker.getSession().addItem(oldItem, oldItem.getAmount(), "Lost");
                     }
                 }
             } else if (currentItem != null && oldItem != null) {
                 if (currentItem.getAmount() < oldItem.getAmount()) {
-                    sessionTracker.getSession().addItem(oldItem.getName(),
+                    sessionTracker.getSession().addItem(oldItem,
                             oldItem.getAmount() - currentItem.getAmount(), "Spent");
                 } else if (currentItem.getAmount() > oldItem.getAmount()) {
-                    sessionTracker.getSession().addItem(oldItem.getName(),
+                    sessionTracker.getSession().addItem(oldItem,
                             currentItem.getAmount() - oldItem.getAmount(), "Received");
                 }
             }

@@ -72,7 +72,7 @@ public class APIHandler {
             itemParams.put("scriptName", scriptName);
             itemParams.put("user", username);
             String itemsJson = "[" + session.getItemData().stream().map(e -> "{\"name\":" + "\"" + e.getName() + "\",\"status\":"
-                    + "\"" + e.getStatus() + "\",\"amount\":" + e.getAmount() + "}").collect(Collectors.joining(", ")) + "]";
+                    + "\"" + e.getStatus() + "\",\"amount\":" + e.getAmount() + ",\"price\":" + e.getPrice() + "}").collect(Collectors.joining(", ")) + "]";
             itemParams.put("items", itemsJson);
             submitRequest(apiURL + "items", token, itemParams);
 
@@ -89,5 +89,40 @@ public class APIHandler {
         }).start();
 
 
+    }
+
+    private static HashMap<Integer, Integer> cache = new HashMap<>();
+
+    private static final String PRICE_URL = "https://v51zl41bph.execute-api.us-west-2.amazonaws.com/prod?itemId=";
+
+
+    public static int getPrice(int itemID) {
+        if (itemID == 995) return 1;
+
+        if (cache.containsKey(itemID)) {
+            return cache.get(itemID);
+        }
+        int price = 0;
+        try {
+
+            BufferedReader in = null;
+            try {
+                URL url = new URL(PRICE_URL + itemID);
+                URLConnection connect = url.openConnection();
+                in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
+                price = Integer.valueOf(in.readLine());
+                cache.put(itemID, price);
+
+            } finally {
+                if (in != null) {
+                    in.close();
+                }
+            }
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        return price;
     }
 }

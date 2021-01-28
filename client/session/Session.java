@@ -1,6 +1,8 @@
 package me.mykindos.client.tracker.session;
 
+import me.mykindos.client.tracker.api.APIHandler;
 import me.mykindos.utilities.UtilTime;
+import org.osbot.rs07.api.model.Item;
 import org.osbot.rs07.api.ui.Skill;
 
 import java.util.ArrayList;
@@ -91,22 +93,23 @@ public class Session {
     /**
      * Add new item to the session.
      * Will increment existing entries to prevent mass database entries
-     * @param itemName Item name
+     * @param item the item
      * @param amount Amount of item
      * @param status Item status (Received, Lost, Spent)
      */
-    public void addItem(String itemName, int amount, String status){
+    public void addItem(Item item, int amount, String status){
         ListIterator<ItemData> items = itemData.listIterator();
         while(items.hasNext()){
             ItemData data = items.next();
-            if(!data.getName().equalsIgnoreCase(itemName)) continue;
+            if(!data.getName().equalsIgnoreCase(item.getName())) continue;
             if(!data.getStatus().equalsIgnoreCase(status)) continue;
 
             data.setAmount(data.getAmount() + amount);
+            data.setPrice(APIHandler.getPrice(item.getId()) * data.getAmount());
             return;
         }
 
-        itemData.add(new ItemData(itemName, amount, status));
+        itemData.add(new ItemData(item.getName(), amount, status, APIHandler.getPrice(item.getId()) * amount));
     }
 
     /**

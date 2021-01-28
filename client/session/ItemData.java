@@ -9,6 +9,7 @@ public class ItemData {
     private String name;
     private String status;
     private int amount;
+    private int price;
 
     /**
      * Create an ItemData Object
@@ -16,10 +17,11 @@ public class ItemData {
      * @param amount Amount in stack
      * @param status Status of item (Gained / Lost / Etc)
      */
-    public ItemData(String name, int amount, String status){
+    public ItemData(String name, int amount, String status, int price){
         this.name = name;
         this.amount = amount;
         this.status = status;
+        this.price = price;
     }
 
     /**
@@ -49,5 +51,14 @@ public class ItemData {
      */
     public void setAmount(int amount){
         this.amount = amount;
+    }
+
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
