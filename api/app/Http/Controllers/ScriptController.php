@@ -122,7 +122,8 @@ class ScriptController extends Controller
                 ['exp', '>', 0],
                 ['scriptID', '=', $request->scriptID]
             ])
-            ->groupBy('skillID');
+            ->groupBy('skillID')
+            ->orderBy('expTotal', 'desc');
 
 
         $itemData = $user->item()
@@ -155,7 +156,8 @@ class ScriptController extends Controller
             ->where([
                 ['exp', '>', 0]
             ])
-            ->groupBy('skillID');
+            ->groupBy('skillID')
+            ->orderBy('expTotal', 'desc');
 
 
         $itemData = $script->item()
