@@ -130,7 +130,8 @@ class ScriptController extends Controller
             ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
             ->selectRaw("itemName, status, SUM(amount) as total")
             ->where('scriptID', '=', $request->scriptID)
-            ->groupBy(['itemID', 'itemStatusID']);
+            ->groupBy(['itemID', 'itemStatusID'])
+            ->orderBy('SUM(amount)', 'desc');
 
         return response([
             'experience' => $expData->get(),
@@ -161,7 +162,8 @@ class ScriptController extends Controller
             ->leftJoin('itemstatus', 'itemstatus.id', '=', 'scriptitems.itemStatusID')
             ->leftJoin('item', 'item.id', '=', 'scriptitems.itemID')
             ->selectRaw("itemName, status, SUM(amount) as total")
-            ->groupBy(['itemID', 'itemStatusID']);
+            ->groupBy(['itemID', 'itemStatusID'])
+            ->orderBy('SUM(amount)', 'desc');
 
         return response([
             'users' => $userData,
