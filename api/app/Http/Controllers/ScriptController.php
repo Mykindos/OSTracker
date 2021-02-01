@@ -135,7 +135,11 @@ class ScriptController extends Controller
             ->groupBy(['itemID', 'itemStatusID'])
             ->orderBy('total', 'desc');
 
-        $totalProfit = $user->item()->whereRaw('itemStatusID = 1')->sum('price');
+        $totalProfit = $user->item()
+            ->where([
+                ['itemStatusID', '=', 1],
+                ['scriptID', '=', $request->scriptID]])
+            ->sum('price');
 
         return response([
             'experience' => $expData->get(),

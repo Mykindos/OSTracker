@@ -36,14 +36,16 @@ public class TrackerThread extends Thread {
         while (sessionTracker.getTracker().isRunning()) {
 
             try {
-                if (sessionTracker.getTracker().getClient().getGameState() == Client.GameState.LOGGED_IN) {
+                if (sessionTracker.getTracker().getClient().isLoggedIn()
+                        && sessionTracker.getTracker().myPlayer().isVisible()
+                        && !sessionTracker.getTracker().getClient().isWelcomeScreenVisible()) {
                     trackInventory();
                     if ((sessionTracker.getSession().getStartTime()
                             + (60_000 * sessionTracker.getTracker().getUpdateInterval())) - System.currentTimeMillis() <= 0) {
                         sessionTracker.endSession();
                     }
                 }
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -61,8 +63,9 @@ public class TrackerThread extends Thread {
         Item[] currentInventoryItems = tracker.getInventory().getItems();
         Item[] currentEquippedItems = tracker.getEquipment().getItems();
 
-        if(tracker.getBank().isOpen() || tracker.getDepositBox().isOpen() || tracker.getGrandExchange().isOpen()){
-            interfaceOpenTime = System.currentTimeMillis() + 2000;
+        if(tracker.getBank().isOpen() || tracker.getDepositBox().isOpen()
+                || tracker.getGrandExchange().isOpen() || tracker.getTrade().isCurrentlyTrading()){
+            interfaceOpenTime = System.currentTimeMillis() + 500;
         }
 
         if (interfaceOpenTime - System.currentTimeMillis() <= 0) {
@@ -124,14 +127,10 @@ public class TrackerThread extends Thread {
      * @return True amount of an item hasn't changed
      */
     private boolean wasMoved(Item item, Item[] setA, Item[] setB) {
-        Item finalOldItem = item;
-        int countA = (int) Arrays.stream(setA).filter(f -> f != null && f.getName().equals(finalOldItem.getName())).count();
-        int countB = (int) Arrays.stream(setB).filter(f -> f != null && f.getName().equalsIgnoreCase(finalOldItem.getName())).count();
-        if (countA == countB) {
-            return true;
-        }
+        int countA = (int) Arrays.stream(setA).filter(f -> f != null && f.getName().equals(item.getName())).count();
+        int countB = (int) Arrays.stream(setB).filter(f -> f != null && f.getName().equalsIgnoreCase(item.getName())).count();
 
-        return false;
+        return countA == countB;
     }
 
     private boolean changedInventory(Item item){
