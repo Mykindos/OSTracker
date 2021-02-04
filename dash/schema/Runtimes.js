@@ -1,5 +1,5 @@
 cube(`Runtimes`, {
-  sql: `SELECT * FROM OSTracker.runtimes`,
+  sql: `SELECT * FROM ${process.env.CUBEJS_DB_NAME}.runtimes`,
   
   joins: {
     BotUsers: {

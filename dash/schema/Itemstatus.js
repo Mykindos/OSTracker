@@ -1,5 +1,5 @@
 cube(`Itemstatus`, {
-  sql: `SELECT * FROM OSTracker.itemstatus`,
+  sql: `SELECT * FROM ${process.env.CUBEJS_DB_NAME}.itemstatus`,
   
   joins: {
     
