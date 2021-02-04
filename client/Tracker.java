@@ -49,6 +49,7 @@ public class Tracker extends MethodProvider {
      */
     public Tracker start() {
 
+
         getExperienceTracker().startAll();
         sessionTracker = new SessionTracker(this);
         isRunning = true;
