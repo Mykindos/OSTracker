@@ -17,7 +17,7 @@ const DashboardItems = [
                 ],
                 "timeDimensions": [],
                 "order": {
-                    "Scriptitems.price": "desc"
+                    "Scriptitems.priceMax": "desc"
                 },
                 "dimensions": [
                     "Item.itemname"
