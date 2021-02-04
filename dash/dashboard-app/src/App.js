@@ -4,7 +4,7 @@ import React from 'react';
 import cubejs from '@cubejs-client/core';
 import { CubeProvider } from '@cubejs-client/react';
 import Header from './components/Header';
-const API_URL = "http://localhost:4000";
+const API_URL = "http://api.mykindos.me:4000";
 const CUBEJS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTI0NDkwNjQsImV4cCI6MTYxMjUzNTQ2NH0.GuF7jsbxlxAfpDVrHJSZS2fbqye5Lp6X5HtywyOJFqk";
 const cubejsApi = cubejs(CUBEJS_TOKEN, {
   apiUrl: `${API_URL}/cubejs-api/v1`
