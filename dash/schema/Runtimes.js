@@ -1,5 +1,5 @@
 cube(`Runtimes`, {
-  sql: `SELECT * FROM ostracker.runtimes`,
+  sql: `SELECT * FROM OSTracker.runtimes`,
   
   joins: {
     BotUsers: {

@@ -1,5 +1,5 @@
 cube(`Experiencegained`, {
-  sql: `SELECT * FROM ostracker.experiencegained`,
+  sql: `SELECT * FROM OSTracker.experiencegained`,
   
   joins: {
     BotUsers: {

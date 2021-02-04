@@ -1,5 +1,5 @@
 cube(`Itemstatus`, {
-  sql: `SELECT * FROM ostracker.itemstatus`,
+  sql: `SELECT * FROM OSTracker.itemstatus`,
   
   joins: {
     

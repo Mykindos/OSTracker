@@ -1,5 +1,5 @@
 cube(`BotUsers`, {
-  sql: `SELECT * FROM ostracker.bot_users`,
+  sql: `SELECT * FROM OSTracker.bot_users`,
   
   joins: {
     

@@ -1,5 +1,5 @@
 cube(`Scriptitems`, {
-  sql: `SELECT * FROM ostracker.scriptitems`,
+  sql: `SELECT * FROM OSTracker.scriptitems`,
   
   joins: {
     BotUsers: {
