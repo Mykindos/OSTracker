@@ -21,7 +21,8 @@ cube(`Item`, {
     
     itemname: {
       sql: `${CUBE}.\`itemName\``,
-      type: `string`
+      type: `string`,
+      title: `Item`
     }
   }
 });

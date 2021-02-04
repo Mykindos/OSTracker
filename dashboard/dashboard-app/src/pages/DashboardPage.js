@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import ChartRenderer from '../components/ChartRenderer';
 import Dashboard from '../components/Dashboard';
 import DashboardItem from '../components/DashboardItem';
+
 const DashboardItems = [
     {
         id: 1,
@@ -12,13 +13,9 @@ const DashboardItems = [
             query: {
                 "measures": [
                     "Scriptitems.amount",
-                    "Scriptitems.price"
+                    "Scriptitems.priceFormat"
                 ],
-                "timeDimensions": [
-                    {
-                        "dimension": "Scriptitems.createdAt"
-                    }
-                ],
+                "timeDimensions": [],
                 "order": {
                     "Scriptitems.price": "desc"
                 },
@@ -33,7 +30,7 @@ const DashboardItems = [
                             "Received"
                         ]
                     }
-                    ]
+                ]
             },
             chartType: "table"
         }
@@ -41,22 +38,22 @@ const DashboardItems = [
 ];
 
 const DashboardPage = () => {
-  const dashboardItem = item => <Grid item xs={12} lg={6} key={item.id}>
-      <DashboardItem title={item.name}>
-        <ChartRenderer vizState={item.vizState} />
-      </DashboardItem>
+    const dashboardItem = item => <Grid item xs={12} lg={6} key={item.id}>
+        <DashboardItem title={item.name}>
+            <ChartRenderer vizState={item.vizState}/>
+        </DashboardItem>
     </Grid>;
 
-  const Empty = () => <div style={{
-    textAlign: 'center',
-    padding: 12
-  }}>
-      <Typography variant="h5" color="inherit">
-        There are no charts on this dashboard. Use Playground Build to add one.
-      </Typography>
+    const Empty = () => <div style={{
+        textAlign: 'center',
+        padding: 12
+    }}>
+        <Typography variant="h5" color="inherit">
+            There are no charts on this dashboard. Use Playground Build to add one.
+        </Typography>
     </div>;
 
-  return DashboardItems.length ? <Dashboard>{DashboardItems.map(dashboardItem)}</Dashboard> : <Empty />;
+    return DashboardItems.length ? <Dashboard>{DashboardItems.map(dashboardItem)}</Dashboard> : <Empty/>;
 };
 
 export default DashboardPage;

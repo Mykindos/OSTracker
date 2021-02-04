@@ -38,6 +38,12 @@ cube(`Scriptitems`, {
       sql: `price`,
       type: `sum`,
       format: `currency`
+    },
+
+    priceFormat: {
+      sql: `FORMAT(price, 0)`,
+      type: `number`,
+      title: `Profit`
     }
 
   },
