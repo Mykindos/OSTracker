@@ -1,5 +1,5 @@
 cube(`Scriptitems`, {
-  sql: `SELECT * FROM ${process.env.CUBEJS_DB_NAME}.scriptitems`,
+  sql: `SELECT * FROM OSTracker.scriptitems`,
   
   joins: {
     BotUsers: {

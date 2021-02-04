@@ -1,5 +1,5 @@
 cube(`Logs`, {
-  sql: `SELECT * FROM ${process.env.CUBEJS_DB_NAME}.logs`,
+  sql: `SELECT * FROM OSTracker.logs`,
   
   joins: {
     BotUsers: {
