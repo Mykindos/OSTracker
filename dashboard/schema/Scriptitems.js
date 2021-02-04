@@ -40,7 +40,7 @@ cube(`Scriptitems`, {
       format: `currency`
     },
 
-    priceMax {
+    priceMax: {
       sql: `MAX(price)`,
       type: `number`
     },
