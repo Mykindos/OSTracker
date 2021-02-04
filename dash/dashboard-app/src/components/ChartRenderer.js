@@ -89,10 +89,9 @@ const TypeToChartComponent = {
     resultSet
   }) {
     return <Table aria-label="simple table">
-          <TableHead>
+        <TableHead>
           <TableRow>
-          {resultSet.tableColumns().map(c => <TableCell key={c.key}>{c.shortTitle}</TableCell>)}
-
+            {resultSet.tableColumns().map(c => <TableCell key={c.key}>{c.title}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody>
