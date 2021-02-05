@@ -44,21 +44,21 @@ const TypeToChartComponent = {
            resultSet
          }) => {
     return <CartesianChart resultSet={resultSet} ChartComponent={LineChart}>
-      {resultSet.seriesNames().map((series, i) => <Line key={series.key} stackId="a" dataKey={series.key} name={series.title} stroke={colors[i]} />)}
+      {resultSet.seriesNames().map((series, i) => <Line key={series.key} stackId="a" dataKey={series.key} name={series.shortTitle} stroke={colors[i]} />)}
     </CartesianChart>;
   },
   bar: ({
           resultSet
         }) => {
     return <CartesianChart resultSet={resultSet} ChartComponent={BarChart}>
-      {resultSet.seriesNames().map((series, i) => <Bar key={series.key} stackId="a" dataKey={series.key} name={series.title} fill={colors[i]} />)}
+      {resultSet.seriesNames().map((series, i) => <Bar key={series.key} stackId="a" dataKey={series.key} name={series.shortTitle} fill={colors[i]} />)}
     </CartesianChart>;
   },
   area: ({
            resultSet
          }) => {
     return <CartesianChart resultSet={resultSet} ChartComponent={AreaChart}>
-      {resultSet.seriesNames().map((series, i) => <Area key={series.key} stackId="a" dataKey={series.key} name={series.title} stroke={colors[i]} fill={colors[i]} />)}
+      {resultSet.seriesNames().map((series, i) => <Area key={series.key} stackId="a" dataKey={series.key} name={series.shortTitle} stroke={colors[i]} fill={colors[i]} />)}
     </CartesianChart>;
   },
   pie: ({

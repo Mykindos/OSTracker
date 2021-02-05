@@ -34,7 +34,34 @@ const DashboardItems = [
             },
             chartType: "table"
         }
+    },
+    {
+        id: 2,
+        name: "Runtime",
+        vizState: {
+            query: {
+                "measures": [
+                    "Runtimes.durationHours"
+                ],
+                "timeDimensions": [
+                    {
+                        "dimension": "Runtimes.createdAt",
+                        "granularity": "day",
+                        "dateRange": "This year"
+                    }
+                ],
+                "order": {
+                    "Runtimes.createdAt": "asc"
+                },
+                "dimensions": [],
+                "filters": []
+            },
+            chartType: "line"
+
+        }
+
     }
+
 ];
 
 const DashboardPage = () => {
