@@ -40,7 +40,7 @@ class ScriptController extends Controller
         $botRuntime->scriptID = $request->scriptID;
         $botRuntime->botUserID = $request->botUserID;
         $botRuntime->version = $request->version;
-        $botRuntime->mirrorMode = $request->mirrorMode;
+        $botRuntime->mirrorMode = $request->mirrorMode ?? 0;
         $botRuntime->duration = $request->duration;
 
         $botRuntime->save();
