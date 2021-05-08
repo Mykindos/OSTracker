@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['middleware' => ['cors', 'json.response', 'throttle:200,1']], function () {
+Route::group(['middleware' => ['cors', 'json.response', 'throttle:500,1']], function () {
 
     Route::post("/register", "Auth\ApiController@registerUser");
 
