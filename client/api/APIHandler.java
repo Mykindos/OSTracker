@@ -53,6 +53,7 @@ public class APIHandler {
             runtimeParams.put("scriptName", scriptName);
             runtimeParams.put("user", username);
             runtimeParams.put("version", version);
+            runtimeParams.put("mirrorMode", session.isMirrorMode());
             runtimeParams.put("duration", session.getRunTime());
             submitRequest(apiURL + "runtime", token, runtimeParams);
 
