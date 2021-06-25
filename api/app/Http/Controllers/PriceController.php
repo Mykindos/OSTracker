@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PriceController extends Controller
 {
-    const API_URL = 'https://rsbuddy.com/exchange/summary.json';
+    const API_URL = 'https://prices.runescape.wiki/api/v1/osrs/latest';
 
     public function getItemPrice(Request $request){
 
@@ -17,7 +17,7 @@ class PriceController extends Controller
         $data = from(json_decode($json, true))->where(function ($e) use ($request) {
             return $e['id'] == $request->itemID;
         })->select(function ($e) {
-            return $e['sell_average'];
+            return $e['high'];
         })->toList();
 
         return response($data[0]);
