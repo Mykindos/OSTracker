@@ -14,12 +14,11 @@ class PriceController extends Controller
             return response(['message' => 'You must provide an itemID']);
         }
         $json = file_get_contents(self::API_URL);
-        $data = from(json_decode($json, true))->where(function ($e) use ($request) {
-            return $e['id'] == $request->itemID;
-        })->select(function ($e) {
-            return $e['high'];
+
+        $data = from(json_decode($json, true))->select(function ($e) use ($request) {
+            return $e[$request->itemID]['high'];
         })->toList();
 
-        return response($data[0]);
+        return count($data) > 0 ? response($data[0]) : response(0);
     }
 }
