@@ -6,20 +6,27 @@ use Illuminate\Http\Request;
 
 class PriceController extends Controller
 {
-    const API_URL = 'https://rsbuddy.com/exchange/summary.json';
+    const API_URL = 'https://prices.runescape.wiki/api/v1/osrs/latest';
 
     public function getItemPrice(Request $request){
 
         if(empty($request->itemID)){
-            return response(['message' => 'You must provide an itemID']);
+            return response(['message' => 'You must provide an itemID!']);
         }
-        $json = file_get_contents(self::API_URL);
-        $data = from(json_decode($json, true))->where(function ($e) use ($request) {
-            return $e['id'] == $request->itemID;
-        })->select(function ($e) {
-            return $e['sell_average'];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, self::API_URL);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mykindos/1.0.0');
+
+        $json  = curl_exec($ch);
+
+        curl_close($ch);
+
+        $data = from(json_decode($json, true))->select(function ($e) use ($request) {
+            return $e[$request->itemID]['high'];
         })->toList();
 
-        return response($data[0]);
+        return count($data) > 0 ? response($data[0]) : response(0);
     }
 }
